@@ -2,7 +2,7 @@ const MOVE_SPEED = 200
 const INVADER_SPEED = 100
 let CURRENT_SPEED = INVADER_SPEED
 const LEVEL_DOWN = 100
-const TIME_LEFT = 100
+const TIME_LEFT = 45
 const BULLET_SPEED = 400
 
 layer(['obj', 'ui'], 'obj')
@@ -32,12 +32,13 @@ const player = add([
 ])
 
 function spawnBullet(p) {
-  add([rect(6, 18),
-  pos(p),
-  origin('centre'),
-  color(0.5, 0.5, 1),
+  add([
+    rect(6,18), 
+    pos(p), 
+    origin('center'), 
+    color(0.5, 0.5, 1),
     'bullet'
-  ])
+    ])
 }
 
 keyDown('left', () => {
@@ -49,12 +50,12 @@ keyDown('right', () => {
 })
 
 keyPress('space', () => {
-  spawnBullet(player.pos.add(0, -25))
+spawnBullet(player.pos.add(0, -25))
 })
 
 action('bullet', (b) => {
   b.move(0, -BULLET_SPEED)
-  if (b.pos.y < 0){
+  if (b.pos.y < 0) {
     destroy(b)
   }
 })
@@ -67,15 +68,15 @@ collides('bullet', 'space-invader', (b,s) => {
   score.text = score.value
 })
 
-const score = add[
+const score = add([
   text('0'),
-  pos(85, 50),
+  pos(50, 50),
   layer('ui'),
-  scale(1),
+  scale(3),
   {
     value: 0,
   }
-]
+])
 
 const timer = add([
   text('0'),
