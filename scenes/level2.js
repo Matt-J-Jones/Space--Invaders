@@ -1,8 +1,8 @@
 const MOVE_SPEED = 200
-const INVADER_SPEED = 100
+const INVADER_SPEED = 200
 let CURRENT_SPEED = INVADER_SPEED
 const LEVEL_DOWN = 100
-const TIME_LEFT = 45
+let TIME_LEFT = 25
 const BULLET_SPEED = 400
 
 layer(['obj', 'ui'], 'obj')
@@ -74,7 +74,7 @@ const score = add([
   layer('ui'),
   scale(1.8),
   {
-    value: 0,
+    value: args.score,
   }
 ])
 
@@ -97,8 +97,8 @@ timer.action(() => {
 })
 
 score.action(() => {
-  if (score.value >= 30) {
-    go('level2', { score: score.value })
+  if (score.value >= 60) {
+    go('gameover', { score: score.value })
   }
 })
 
