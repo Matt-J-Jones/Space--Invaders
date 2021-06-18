@@ -33,12 +33,12 @@ const player = add([
 
 function spawnBullet(p) {
   add([
-    rect(6,18), 
-    pos(p), 
-    origin('center'), 
+    rect(6, 18),
+    pos(p),
+    origin('center'),
     color(0.5, 0.5, 1),
     'bullet'
-    ])
+  ])
 }
 
 keyDown('left', () => {
@@ -50,7 +50,7 @@ keyDown('right', () => {
 })
 
 keyPress('space', () => {
-spawnBullet(player.pos.add(0, -25))
+  spawnBullet(player.pos.add(0, -25))
 })
 
 action('bullet', (b) => {
@@ -60,7 +60,7 @@ action('bullet', (b) => {
   }
 })
 
-collides('bullet', 'space-invader', (b,s) => {
+collides('bullet', 'space-invader', (b, s) => {
   camShake(4)
   destroy(b)
   destroy(s)
